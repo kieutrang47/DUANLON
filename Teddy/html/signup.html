@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+        <link rel="icon" href="../img/fav-icon.png" type="image/x-icon" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Teddy & Dolls </title>
+
+        <!-- Icon css link -->
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../vendors/linearicons/style.css" rel="stylesheet">
+        <link href="../vendors/flat-icon/flaticon.css" rel="stylesheet">
+        <link href="../vendors/stroke-icon/style.css" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Rev slider css -->
+        <link href="../vendors/revolution/css/settings.css" rel="stylesheet">
+        <link href="../vendors/revolution/css/layers.css" rel="stylesheet">
+        <link href="../vendors/revolution/css/navigation.css" rel="stylesheet">
+        <link href="../vendors/animate-css/animate.css" rel="stylesheet">
+        
+        <!-- Extra plugin css -->
+        <link href="../vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+        <link href="../vendors/magnifc-popup/magnific-popup.css" rel="stylesheet">
+        <link href="../vendors/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+        <link href="../vendors/nice-select/css/nice-select.css" rel="stylesheet">
+        
+        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/responsive.css" rel="stylesheet">
+
+		<style>
+
+body{
+        
+        background:rgb(212, 141, 185);
+      background: linear-gradient(45deg, rgb(251, 251, 251), rgb(188, 196, 218));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      }
+			.product-image-container {
+			border-radius: 10px; /* Thêm border-radius cho góc của container */
+			border: 1px solid #ccc;
+			position: relative;
+			display: inline-block;
+			overflow: hidden; /* Đảm bảo nút ẩn không bị hiển thị ra ngoài hình ảnh */
+		}
+		
+		.product-image-container img {
+			transition: transform 0.9s ease;
+		}
+		
+		.product-image-container:hover img {
+			transform: scale(1.1);
+		}
+		
+		.hidden-button {
+			font-size: 12px;
+			border-radius: 5px 5px;
+		   position: absolute;
+			top: 90%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			transition: opacity 0.3s ease; /* Loại bỏ transition visibility */
+		}
+		
+		.product-image-container:hover .hidden-button {
+			opacity: 0.8;
+		}
+		#navbar {
+			position: fixed; /* Cố định thanh navbar */
+			top: 0; /* Đặt nó ở đỉnh trang */
+			width: 100%; /* Chiều rộng toàn màn hình */
+			z-index: 1000; /* Đảm bảo thanh navbar hiển thị trên tất cả các phần tử khác */
+		}
+		.container
+		{
+			width: 75%;
+		}
+		.nav-item
+		{
+			padding: 30px;
+		}
+		#collapsibleNavbar
+		{
+			width: 80%;
+			/* float: left; */
+		}
+		.thuonghieu
+		{
+			border-radius: 10px; /* Thêm border-radius cho góc của container */
+			position: relative;
+			display: inline-block;
+			align-items: center;
+		
+		}
+		.thuonghieu img {
+			transition: transform 0.9s ease;
+			width: 70px;
+			height: 50px;
+			border-radius:10px 10px;
+		}
+		
+		.thuonghieu:hover img {
+			transform: scale(1.1);
+		}
+		.navbar
+		{
+			height: 70px;
+		}
+		
+			</style>
+	
+    </head>
+    <body>
+        
+        <!--================Main Header Area =================-->
+		<header class="main_header_area">
+			<div class="top_header_area row m0">
+				<div class="container">
+					<div class="float-left">
+						<a href="tell:+18004567890"><i class="fa fa-phone" aria-hidden="true"></i> + (1800) 456 7890</a>
+						<a href="mainto:kieutrang060811@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> kieutrang060811@gmail.com</a>
+					</div>
+					<div class="float-right">
+						<ul class="h_social list_style">
+							<li><a href="https://www.facebook.com/kiucahn.118?locale=vi_VN"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://www.facebook.com/kiucahn.118?locale=vi_VN"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://lms.iuh.edu.vn/login/index.php"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+						<ul class="h_search list_style">
+							<li class="shop_cart"><a href="#"><i class="lnr lnr-cart"></i></a></li>
+							<li><a class="popup-with-zoom-anim" href="#test-search"><i class="fa fa-search"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+        <!--================End Main Header Area =================-->
+        <body>
+            
+             <div class="section" style="margin-top: -100px;">
+        <h3 class="text-center font-weight-bold mb-5" style="color: rgb(2, 6, 10);">ĐĂNG KÝ TÀI KHOẢN</h3>
+        <div class="container">
+            <div class="row">
+            <div class="col-4">
+                <img src="../img/ảnh .jpg" alt="" style="margin-left:-100px; width: 200px; border-radius: 1rem; margin-right: 100px;">
+            </div>
+            <div class="col-8">
+            <form>
+              <label for="email" style="color: rgb(0, 3, 3);">Email:</label>
+              <input type="email" id="email" required><br><br>
+              <label for="password" style="color: rgb(1, 12, 12);">Mật khẩu:</label>
+              <input type="password" id="password" required><br><br>
+              <input type="button" value="Đăng ký" onclick="registerUser()">
+            </form>
+        </div>
+            
+            <script>
+             // Hàm đăng ký người dùng
+                function registerUser() {
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+
+                // Kiểm tra xem email đã nhập đúng định dạng hay chưa
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Email không hợp lệ');
+                    return;
+                }
+
+                // Kiểm tra độ dài mật khẩu tối thiểu
+                var minLength = 6;
+                if (password.length < minLength) {
+                    alert('Mật khẩu phải có ít nhất ' + minLength + ' ký tự');
+                    return;
+                }
+
+                // Kiểm tra xem người dùng đã tồn tại trong localStorage hay chưa
+                if (localStorage.getItem(email)) {
+                    alert('Email đã tồn tại');
+                    return;
+                }
+
+                // Lưu thông tin người dùng vào localStorage
+                var user = {
+                    email: email,
+                    password: password
+                };
+                localStorage.setItem(email, JSON.stringify(user));
+
+                // Thông báo đăng ký thành công
+                alert('Đăng ký thành công');
+                                // Chuyển sang giao diện đăng nhập
+                                window.location.href = "index.html";
+                            }
+            </script>
+        </div>
+        <!-- footer -->
+<footer>
+    
+</footer>
+          </body>

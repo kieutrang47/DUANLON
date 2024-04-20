@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sweetalert2.css">
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <title>Đăng nhập</title>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        
+        background:rgb(212, 141, 185);
+      background: linear-gradient(45deg, rgb(212, 141, 185), rgb(233, 225, 230));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      }
+      .form {
+    width: 100%;
+}
+.form > div {
+    height: 5rem;
+    margin: 1.5rem 0;
+}
+.form__username,
+.form__password {
+    display: flex;
+}
+.form__icon {
+    font-size: 2rem;
+    background: #363b41;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form__icon i {
+    color: #606468;
+}
+.form__input {
+    width: 100%;
+    position: relative;
+}
+.form__input > input {
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background-color: #3b4148;
+    transition: background-color 0.4s;
+}
+.form__input:hover > input {
+    background-color: #434a52;
+}
+
+.form__submit button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s;
+}
+.form__submit button i {
+    color: #6ca65d;
+    font-size: 3rem;
+    transition: all 0.4s;
+}
+.form__submit button:hover {
+    background-color: #6ca65d;
+    transition: all 0.4s;
+}   
+.form__submit button:hover i {
+    color: #fff;
+    transition: all 0.4s;
+}
+
+#togglePassword {
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgb(168, 161, 161);
+    top: 50%;
+    right: 1rem;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+
+.message__error {
+    font-size: 1.5rem;
+    color: rgb(248, 61, 61);
+    margin: -1rem 1rem;
+}
+.loading {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items:center;
+    justify-content:center;
+    background: rgba(0, 0, 0, 0.479);
+}
+.loading img{
+    width: 7rem;
+}
+    </style>
+
+    <script>
+
+const togglePassword = document.getElementById("togglePassword");
+const iconLoading = document.getElementById("loading");
+const inputUsername =  document.getElementById('username')
+const inputPassword = document.getElementById('password')
+const onToggleTypePassword = () => {
+    togglePassword.classList.toggle("fa-eye-slash");
+
+    if (inputPassword.type === "password") {
+        inputPassword.type = "text";
+    } else {
+        inputPassword.type = "password";
+    }
+};
+
+togglePassword.addEventListener("click", onToggleTypePassword);
+
+const showLoading = () => {
+    iconLoading.style.display = "flex";
+};
+const hideLoading = () => {
+    iconLoading.style.display = "none";
+};
+ 
+function checkUsername(){
+    let email = document.getElementById('username').value
+    if(email.trim()==""){
+        document.getElementById('err_user').innerHTML = "Hãy nhập email";
+        return false
+    }
+    var reg_email = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/
+    if(!reg_email.test(email)){
+        document.getElementById('err_user').innerHTML = "Email không hợp lệ"
+        return false
+    }
+    document.getElementById('err_user').innerHTML = ""
+    return true
+}
+
+function checkPassword(){
+    let password = document.getElementById('password').value
+    if(password.trim()==""){
+        document.getElementById('err_password').innerHTML = "Hãy nhập mật khẩu"
+        return false
+    }
+    var reg_password = /^\w{5,}$/
+    if(!reg_password.test(password)){
+        document.getElementById('err_password').innerHTML  = "Mật khẩu chứa ít nhất 5 ký tự"
+        return false
+    }
+    document.getElementById('err_password').innerHTML = ""
+    return true
+}
+
+function login(){
+	var email = document.getElementById('username').value
+	var password = document.getElementById('password').value
+
+        let dskh = JSON.parse(localStorage.getItem("dskh"))
+        
+        showLoading();  
+        setTimeout(()=>{
+            for(var i = 0; i < dskh.length; i++){
+                if(dskh.find(spTemp=>spTemp.email === email) && dskh.find(spTemp=>spTemp.pass === password)){
+                    document.getElementById("err").innerHTML = "Đăng nhập thành công"
+                    window.location.href = 'index.html';
+                    return true
+                }else if(email.trim()=="" || password.trim()==""){
+                    Swal.fire({
+                        icon: 'error',
+                        text: 'Hãy nhập thông tin',
+                      })
+                    hideLoading()
+                    return false
+                }
+                else{
+                    Swal.fire({
+                        icon: 'error',
+                        text: 'Tên đăng nhập hoặc mật khẩu không đúng',
+                      })
+                    hideLoading()
+                    return false
+                }
+            }   
+        }
+        ,1000)
+    
+	
+}
+    </script>
+    
+</head>
+<body>
+    
+    <div class="loading" id="loading">
+        <img src="../img/loading.gif" alt="">
+    </div>
+
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img src="../img/login.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-7 px-5 pt-5">
+                    <h1><img src="../img/Screenshot 2024-04-08 at 12.52.11 PM.png" alt="" style="width: 300px; border-radius: 1rem; height: 70px;"></h1>
+                    <h4 class="font-weight-bold py-3" style="font-size: 2rem; color: black;">Đăng nhập vào tài khoản của bạn</h4>
+                    <form>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required style="margin-left: 25px;"><br><br>
+                        <label for="password">Mật khẩu:</label>
+                        <input type="password" id="password" required><br><br>
+                        <input type="button" value="Đăng nhập" onclick="loginUser()" style="margin-left:77px;">
+                      </form>
+                      
+                      <script>
+                        // Hàm đăng nhập người dùng
+                        function loginUser() {
+                          var email = document.getElementById('email').value;
+                          var password = document.getElementById('password').value;
+                    
+                          // Kiểm tra xem người dùng có tồn tại trong localStorage hay không
+                          var user = localStorage.getItem(email);
+                          if (!user) {
+                            alert('Email không tồn tại');
+                            return;
+                          }
+                    
+                          // Kiểm tra mật khẩu
+                          user = JSON.parse(user);
+                          if (user.password !== password) {
+                            alert('Mật khẩu không chính xác');
+                            return;
+                          }
+                    
+                        //   // Thông báo đăng nhập thành công
+                        //   alert('Đăng nhập thành công');
+                    
+                          // Chuyển sang giao diện home
+                          window.location.href = "home.html";
+                        }
+                      </script>
+                        <a href="#">Quên mật khẩu</a>
+                        <p>Chưa có tài khoản<a href="../html/signup.html">&nbsp;Đăng ký tại đây</a></p>
+                    
+    </body>
+</html>
